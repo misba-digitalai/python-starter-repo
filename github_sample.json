@@ -1,0 +1,45 @@
+{
+  "name": "GitHub API Test",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "url": "https://api.github.com/repos/misba-digitalai/python-starter-repo",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "httpHeaderAuth",
+        "options": {
+          "timeout": 10000
+        }
+      },
+      "name": "Test GitHub API",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [650, 300],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "6a8mYhOIHRXG5HWP",
+          "name": "Github Token"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Test GitHub API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}
